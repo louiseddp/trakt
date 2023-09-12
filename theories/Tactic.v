@@ -14,21 +14,32 @@ From elpi Require Import elpi.
 From Trakt Require Import InternalProofs.
 From Trakt Require Export Database.
 
+From Trakt.Elpi Extra Dependency "types.elpi" as types_elpi.
+From Trakt.Elpi Extra Dependency "common.elpi" as common_elpi.
+From Trakt.Elpi Extra Dependency "proof.elpi" as proof_elpi.
+From Trakt.Elpi Extra Dependency "rewrite-identities.elpi" as rewrite_identities_elpi.
+From Trakt.Elpi Extra Dependency "preprocess.elpi" as preprocess_elpi.
+From Trakt.Elpi Extra Dependency "generalise-free-variables.elpi" as generalise_free_variables_elpi.
+From Trakt.Elpi Extra Dependency "bool-to-prop.elpi" as bool_to_prop_elpi.
+From Trakt.Elpi Extra Dependency "tactic.elpi" as tactic_elpi.
+From Trakt.Elpi Extra Dependency "boolify-arrows.elpi" as boolify_arrows_elpi.
+From Trakt.Elpi Extra Dependency "reorder-quantifiers.elpi" as reorder_quantifiers_elpi.
+
 Elpi Tactic trakt.
 
-Elpi Accumulate File "types.elpi" From Trakt.Elpi.
+Elpi Accumulate File types_elpi.
 Elpi Accumulate Db embeddings.db.
 Elpi Accumulate Db logic.db.
 Elpi Accumulate Db symbols.db.
 Elpi Accumulate Db relations.db.
 Elpi Accumulate Db conversion.db.
-Elpi Accumulate File "common.elpi" From Trakt.Elpi.
-Elpi Accumulate File "proof.elpi" From Trakt.Elpi.
-Elpi Accumulate File "rewrite-identities.elpi" From Trakt.Elpi.
-Elpi Accumulate File "preprocess.elpi" From Trakt.Elpi.
-Elpi Accumulate File "generalise-free-variables.elpi" From Trakt.Elpi.
-Elpi Accumulate File "bool-to-prop.elpi" From Trakt.Elpi.
-Elpi Accumulate File "tactic.elpi" From Trakt.Elpi.
+Elpi Accumulate File common_elpi.
+Elpi Accumulate File proof_elpi.
+Elpi Accumulate File rewrite_identities_elpi.
+Elpi Accumulate File preprocess_elpi.
+Elpi Accumulate File generalise_free_variables_elpi.
+Elpi Accumulate File bool_to_prop_elpi.
+Elpi Accumulate File tactic_elpi.
 Elpi Accumulate lp:{{
   solve InitialGoal NewGoals :-
     InitialGoal = goal Context _ InitialGoalTy _ [trm ETarget, trm LTarget, trm RuntimeRelData],
@@ -81,19 +92,19 @@ Tactic Notation "trakt" constr(logic_target) :=
 
 Elpi Tactic trakt_pose.
 
-Elpi Accumulate File "types.elpi" From Trakt.Elpi.
+Elpi Accumulate File types_elpi.
 Elpi Accumulate Db embeddings.db.
 Elpi Accumulate Db logic.db.
 Elpi Accumulate Db symbols.db.
 Elpi Accumulate Db relations.db.
 Elpi Accumulate Db conversion.db.
-Elpi Accumulate File "common.elpi" From Trakt.Elpi.
-Elpi Accumulate File "proof.elpi" From Trakt.Elpi.
-Elpi Accumulate File "rewrite-identities.elpi" From Trakt.Elpi.
-Elpi Accumulate File "preprocess.elpi" From Trakt.Elpi.
-Elpi Accumulate File "generalise-free-variables.elpi" From Trakt.Elpi.
-Elpi Accumulate File "bool-to-prop.elpi" From Trakt.Elpi.
-Elpi Accumulate File "tactic.elpi" From Trakt.Elpi.
+Elpi Accumulate File common_elpi.
+Elpi Accumulate File proof_elpi.
+Elpi Accumulate File rewrite_identities_elpi.
+Elpi Accumulate File preprocess_elpi.
+Elpi Accumulate File generalise_free_variables_elpi.
+Elpi Accumulate File bool_to_prop_elpi.
+Elpi Accumulate File tactic_elpi.
 Elpi Accumulate lp:{{
   solve Goal NewGoals :-
     Goal = goal _ _ GoalTy _ [trm ETarget, trm LTarget, trm H, str S, trm RuntimeRelData],
@@ -165,11 +176,11 @@ Tactic Notation "trakt_pose"
 
 Elpi Tactic trakt_boolify_arrows.
 
-Elpi Accumulate File "types.elpi" From Trakt.Elpi.
+Elpi Accumulate File types_elpi.
 Elpi Accumulate Db logic.db.
-Elpi Accumulate File "common.elpi" From Trakt.Elpi.
-Elpi Accumulate File "proof.elpi" From Trakt.Elpi.
-Elpi Accumulate File "boolify-arrows.elpi" From Trakt.Elpi.
+Elpi Accumulate File common_elpi.
+Elpi Accumulate File proof_elpi.
+Elpi Accumulate File boolify_arrows_elpi.
 Elpi Accumulate lp:{{
   solve ((goal _ _ GoalTy _ []) as InitialGoal) NewGoals :- !, std.do! [
     coq.elaborate-skeleton GoalTy _ EGoalTy ok,
@@ -187,9 +198,9 @@ Tactic Notation "trakt_boolify_arrows" := elpi trakt_boolify_arrows.
 
 Elpi Tactic trakt_reorder_quantifiers.
 
-Elpi Accumulate File "types.elpi" From Trakt.Elpi.
-Elpi Accumulate File "common.elpi" From Trakt.Elpi.
-Elpi Accumulate File "reorder-quantifiers.elpi" From Trakt.Elpi.
+Elpi Accumulate File types_elpi.
+Elpi Accumulate File common_elpi.
+Elpi Accumulate File reorder_quantifiers_elpi.
 Elpi Accumulate lp:{{
   solve ((goal _ _ GoalTy _ []) as InitialGoal) NewGoals :- !, std.do! [
     coq.elaborate-skeleton GoalTy _ EGoalTy ok,
