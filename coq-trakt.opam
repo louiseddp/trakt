@@ -12,7 +12,7 @@ build: [ make "-j%{jobs}%" ]
 install: [ make "install" ]
 depends: [
   "coq-elpi" {>= "1.12~"}
-  "coq" {>= "8.15~"}
+  "coq" {>= "8.16~"}
 ]
 tags: [ 
   "category:Computer Science/Decision Procedures and Certified Algorithms/Decision procedures"
