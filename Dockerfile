@@ -1,6 +1,6 @@
-# docker build -t coqmaster/coqmaster:latest .
-# docker run -it coqmaster/coqmaster:latest
-# docker run -w /home/coq/trakt -v "/home/louise/github.com/ckeller/trakt:/home/coq/trakt" -it coqmaster/coqmaster:latest
+# docker build -t trakt/trakt:latest .
+# docker run -it trakt/trakt:latest
+# docker run -w /home/coq/trakt -v "/home/louise/github.com/ckeller/trakt:/home/coq/trakt" -it trakt/trakt:latest
 
 ############################################################
 # Dockerfile to build SMTCoq dependencies
@@ -13,8 +13,7 @@ USER coq
 
 ################### SYSTEM PREREQUISITES ###################
 
-RUN sudo apt-get -y update && \
-    sudo apt-get -y install wget atool bison flex
+RUN sudo apt-get -y update
 
 #################### OPAM PREREQUISITES ####################
 
@@ -22,8 +21,8 @@ WORKDIR /home/coq
 
 RUN opam update && \
     opam upgrade -y && \
-    opam repo add coq-extra-dev https://coq.inria.fr/opam/extra-dev && \
-    opam install coq-elpi
+    opam repo add coq-released https://coq.inria.fr/opam/released && \
+    opam install coq-elpi -y
 
 ######################### BINARIES #########################
 
